@@ -17,10 +17,6 @@ import java.util.List;
  */
 public class TestVod {
     public static void main(String[] args) throws Exception {
-//        String accessKeyId = "LTAI5tHDVcM4DWyL9tPzQCST";
-//        String accessKeySecret = "jcPRa39Sg4XpiteTMZYPitguQJrhKk";
-//        String title = "douyin-upload by sdk";
-//        String fileName = "C:/Users/LCY/Desktop/douyin.mp4";
 //        // 上传视频的代码
 //        UploadVideoRequest request = new UploadVideoRequest(accessKeyId, accessKeySecret, title, fileName);
 //        /* 可指定分片上传时每个分片的大小，默认为2M字节 */
