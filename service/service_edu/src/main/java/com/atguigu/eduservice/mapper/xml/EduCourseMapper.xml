@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.eduservice.mapper.EduCourseMapper">
+
+    <select id="getCoursePublishInfo" resultType="com.atguigu.eduservice.entity.vo.CoursePublishVo">
+        SELECT ec.id, ec.title, ec.price, ec.lesson_num, ec.cover,
+               et.`name` AS teacher_name,
+               es1.title AS subject_level_one,
+               es2.title AS subject_level_two
+        FROM edu_course ec LEFT OUTER JOIN edu_course_description ecd ON ec.id = ecd.id
+                           LEFT OUTER JOIN edu_teacher et ON ec.teacher_id = et.id
+                           LEFT OUTER JOIN edu_subject es1 ON ec.subject_parent_id = es1.id
+                           LEFT OUTER JOIN edu_subject es2 ON ec.subject_id = es2.id
+        WHERE ec.id = #{courseId}
+    </select>
+
+    <!--  根据课程id查询课程详细信息  -->
+    <select id="getBaseCourseInfo" resultType="com.atguigu.eduservice.entity.frontvo.CourseWebVo">
+        SELECT ec.id, ec.title, ec.price, ec.lesson_num, ec.cover, ec.buy_count, ec.view_count,
+               ecd.description,
+               et.id AS teacher_id,
+               et.`name` AS teacher_name,
+               et.intro, et.avatar,
+               es1.id AS subject_level_one_id,
+               es2.id AS subject_level_two_id,
+               es1.title AS subject_level_one,
+               es2.title AS subject_level_two
+        FROM edu_course ec LEFT OUTER JOIN edu_course_description ecd ON ec.id = ecd.id
+                           LEFT OUTER JOIN edu_teacher et ON ec.teacher_id = et.id
+                           LEFT OUTER JOIN edu_subject es1 ON ec.subject_parent_id = es1.id
+                           LEFT OUTER JOIN edu_subject es2 ON ec.subject_id = es2.id
+        WHERE ec.id = #{courseId}
+    </select>
+</mapper>
