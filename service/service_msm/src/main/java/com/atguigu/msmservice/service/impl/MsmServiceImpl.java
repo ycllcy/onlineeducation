@@ -24,7 +24,7 @@ public class MsmServiceImpl implements MsmService {
     public boolean send(HashMap<String, Object> param, String phone) {
         if (StringUtils.isEmpty(phone)) return false;
 
-        DefaultProfile profile = DefaultProfile.getProfile("cn-beijing", "LTAI5tHDVcM4DWyL9tPzQCST", "jcPRa39Sg4XpiteTMZYPitguQJrhKk");
+        DefaultProfile profile = DefaultProfile.getProfile("cn-beijing", your-access-key-id, your-access-key-secret);
         /** use STS Token
          DefaultProfile profile = DefaultProfile.getProfile(
          "<your-region-id>",           // The region ID
